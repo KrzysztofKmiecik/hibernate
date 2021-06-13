@@ -2,6 +2,7 @@ package pl.kmiecik.hibernate;
 
 
 import javax.persistence.*;
+import java.util.StringJoiner;
 
 @Entity
 @Table(name = "cars")
@@ -55,5 +56,15 @@ public class Car {
 
     public void setColor(Color color) {
         this.color = color;
+    }
+
+    @Override
+    public String toString() {
+        return new StringJoiner(", ", Car.class.getSimpleName() + "[", "]")
+                .add("Id=" + Id)
+                .add("mark='" + mark + "'")
+                .add("model='" + model + "'")
+                .add("color=" + color)
+                .toString();
     }
 }
